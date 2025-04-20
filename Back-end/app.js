@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRouter from './routes/user.route'
 
 dotenv.config();
 
@@ -12,6 +13,8 @@ mongoose.connect(process.env.Mongo).then(() => {
 ;
 
 const app = express();
-app.listen(300, () => {
+app.listen(3000, () => {
 	console.log("Server is runninggg");
 });
+
+app.use( '/user', userRouter );
