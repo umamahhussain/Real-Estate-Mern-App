@@ -7,8 +7,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 
-
-
 dotenv.config();
 
 mongoose.connect(process.env.Mongo).then(() => {
