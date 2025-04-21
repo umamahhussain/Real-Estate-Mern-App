@@ -42,7 +42,6 @@ export default function Header() {
 								src={currentUser.avatar}
 								alt="profile"
 							/>
-							// <li className=" text-slate-700 hover:underline"> Profile</li>
 						) : (
 							<li className=" text-slate-700 hover:underline"> Sign in</li>
 						)}
