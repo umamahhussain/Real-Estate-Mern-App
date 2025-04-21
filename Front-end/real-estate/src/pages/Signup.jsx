@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { useDispatch } from "react-redux";
+import { signInFailure } from "../redux/user/userSlice";
+
 
 export default function Signup() {
 	const [formData, setFormData] = useState({});
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 
 	const handleChange = (e) => {
 		setFormData({
@@ -36,7 +41,10 @@ export default function Signup() {
 		}
 		setLoading(false);
 		setError(null);
+		
+		dispatch(signInFailure(null)); // reset loading + error in Redux
 		navigate("/sign-in");
+
 		console.log(data);
 	};
 
