@@ -167,7 +167,9 @@ export default function Profile() {
 
 	return (
 		<div className="p-3 max-w-lg mx-auto">
-			<h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
+			<h1 className="text-3xl font-semibold text-center my-7 HeadingFont underline ">
+				Profile
+			</h1>
 			<form onSubmit={handleSubmit} className="flex flex-col gap-4">
 				<img
 					src={currentUser.avatar}
@@ -229,7 +231,10 @@ export default function Profile() {
 			<p className="text-green-700 mt-5">
 				{updateSuccess ? "User is updated successfully!" : ""}
 			</p>
-			<button onClick={handleShowListings} className="text-green-700 w-full">
+			<button
+				onClick={handleShowListings}
+				className="text-green-700 hover:cursor-pointer w-full"
+			>
 				Show Listings
 			</button>
 			<p className="text-red-700 mt-5">
@@ -238,7 +243,7 @@ export default function Profile() {
 
 			{userListings && userListings.length > 0 && (
 				<div className="flex flex-col gap-4">
-					<h1 className="text-center mt-7 text-2xl font-semibold">
+					<h1 className="text-center mt-7 text-2xl font-semibold HeadingFont underline">
 						Your Listings
 					</h1>
 					{userListings.map((listing) => (
@@ -254,7 +259,7 @@ export default function Profile() {
 								/>
 							</Link>
 							<Link
-								className="text-slate-700 font-semibold  hover:underline truncate flex-1"
+								className="text-slate-700 font-semibold hover:cursor-pointer hover:underline truncate flex-1"
 								to={`/listing/${listing._id}`}
 							>
 								<p>{listing.name}</p>
@@ -263,11 +268,16 @@ export default function Profile() {
 							<div className="flex flex-col item-center">
 								<button
 									onClick={() => handleListingDelete(listing._id)}
-									className="text-red-700 uppercase"
+									className="text-red-700 hover:cursor-pointer uppercase"
 								>
 									Delete
 								</button>
-								<button className="text-green-700 uppercase">Edit</button>
+
+								<Link to={`/update-listing/${listing._id}`}>
+									<button className="text-green-700 uppercase hover:cursor-pointer">
+										Edit
+									</button>
+								</Link>
 							</div>
 						</div>
 					))}
